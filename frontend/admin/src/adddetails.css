@@ -1,0 +1,8 @@
+.addroom {
+  display: flex;
+  flex-direction: column;
+}
+
+.backdrop {
+  background-image: "./assets/quietBackDrops.png";
+}
