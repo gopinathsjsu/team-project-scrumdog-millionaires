@@ -1,4 +1,4 @@
-# Scrumdod Millionaires - Team 10
+# Scrumdod Millionaires
 
 # Team Members:
 Abhishek <br>
@@ -23,8 +23,6 @@ Suhas <br>
 
 # UI Wireframes:
 
-https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/Project_documents/Weekly_Scrum_report.md
-
 
 # GitHub Repo Link:
 
@@ -39,7 +37,7 @@ https://drive.google.com/drive/folders/1onz9MVpowKVM4HDPWh-Q0zuU95mJbIdJ?usp=sha
 # Weekly Scrum Report 
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/Project_documents/Weekly_Scrum_report.md
 
-#Burndown Chart
+# Burndown Chart
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/Project_documents/BurnDown_Chart.xlsx
 
 
