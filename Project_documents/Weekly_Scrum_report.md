@@ -32,6 +32,6 @@ Adarsh| ER diagram and Class diagram | Registration Backend API - User | --
 Roopesh| Github stories creation | UI Wireframes | --
 Suhas| CockroachDB Schema creation | Registration Backend API - Employee | --
 
-## Sprint 5 : Registration Feature
+## Sprint 5 : Login Feature
 ### Date: 03/24/2022
 
