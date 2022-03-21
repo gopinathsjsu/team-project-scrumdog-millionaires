@@ -1,4 +1,4 @@
-# Scrumdod Millionaires
+# Scrumdog Millionaires
 
 # Team Members:
 Abhishek <br>
