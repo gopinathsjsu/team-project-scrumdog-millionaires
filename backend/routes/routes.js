@@ -11,3 +11,13 @@ router.get("/health", async (req, res, next) => {
     });
   }
 });
+
+const checkPersona = (personaType, res) => {
+  if (personaType.toLowerCase() === "cu") {
+    return "customers";
+  } else if (personaType.toLowerCase() === "ho") {
+    return "hotels";
+  } else {
+    return;
+  }
+};
