@@ -9,14 +9,14 @@ Suhas <br>
 
 # Technology Stack:
 * Frontend - ReactJS, Redux
-* Backend - Jaca, Spring framework
+* Backend - Java, Spring framework
 * Database - Cockroach DB
 * Cloud - 
 * Postman - API Testing
 * Project Management Tools:  
    * GitHub - Source code and Project Management
    * Google Sheet - Tracking tasks and sprint burndown charts
-   * Google meet - Team collaboration (Organizing daily scrum meetings)
+   * Google meet, Google Drive - Team collaboration
    
    
 # Architechture Diagram:
@@ -32,6 +32,9 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
 
 # Scrum Meeting Schedule:
 Thursday, 12:00 PM  <br>
+
+# Google Drive
+https://drive.google.com/drive/folders/1onz9MVpowKVM4HDPWh-Q0zuU95mJbIdJ?usp=sharing
 
 # Weekly Scrum Report 
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/Project_documents/Weekly_Scrum_report.md
