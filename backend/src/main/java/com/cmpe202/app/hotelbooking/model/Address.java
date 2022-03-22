@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity @JsonAutoDetect
 @Table(name = "Address")
 public class Address {
 	
@@ -30,6 +33,7 @@ public class Address {
 	private int id;
 	
 	@Column(name = "address1")
+	@NotEmpty(message = "*Please enter your address")
 	private String address1;
 	
 	@Column(name = "address2")
@@ -45,4 +49,7 @@ public class Address {
 	@JoinColumn(name="city_id",referencedColumnName = "city_id")
 	private City city;
 	
+	 @OneToOne(mappedBy = "address", fetch = FetchType.LAZY,
+	            cascade = CascadeType.ALL)
+	    private User user;
 }

@@ -7,12 +7,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "role")
+@JsonAutoDetect
 public class Role {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
