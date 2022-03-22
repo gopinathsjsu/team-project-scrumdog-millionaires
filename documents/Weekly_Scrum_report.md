@@ -30,7 +30,7 @@ Member| Work Done| Work Planned| Impediments
 Abhishek | Github stories creation |  React JS integration for Registration| --
 Adarsh| ER diagram and Class diagram | Registration Backend API - User | --
 Roopesh| Github stories creation | UI Wireframes | --
-Suhas| CockroachDB Schema creation | Registration Backend API - Employee | --
+Suhas| CockroachDB Schema creation | Registration Backend API - Hotel | --
 
 ## Sprint 5 : Login Feature
 ### Date: 03/24/2022
