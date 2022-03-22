@@ -1,0 +1,17 @@
+﻿{
+    "firstName":"Suhas",
+    "lastName":"B",
+    "email":"suhas2@gmail.com",
+    "password":"hellohelloooo",
+    "address":{
+        "address1":"101 Washington Square",
+        "pincode":"83123",
+        "city":{
+            "cityName":"Sane Jose",
+            "state":{
+                "stateName":"California",
+                "country":"USA"
+            }
+        }
+    }
+}
