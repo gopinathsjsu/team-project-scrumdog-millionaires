@@ -21,3 +21,14 @@ const checkPersona = (personaType, res) => {
     return;
   }
 };
+
+try {
+  const { personaType, email, password } = req.body;
+  let table = await checkPersona(personaType, res);
+  if (!table) res.status(500).send("Persona not specified.");
+} catch (e) {
+  console.error(e);
+  res.status(500).json({
+    error: "Internal Server Error: Please try again",
+  });
+}
