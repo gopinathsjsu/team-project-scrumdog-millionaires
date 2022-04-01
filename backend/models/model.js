@@ -21,4 +21,37 @@ apiModel.login = (table, email) => {
   });
 };
 
+apiModel.register = (dataJson, table) => {
+  return new Promise((resolve, reject) => {
+    let query =
+      "select * from " + table + " where email = '" + dataJson.email + "'";
+    console.log(query);
+    db.query(query, (err, results) => {
+      if (err) return reject(err);
+      if (results.length === 0) {
+        console.log(results);
+        query =
+          "insert into " +
+          table +
+          " (first_name, last_name, email, password) values ('" +
+          dataJson.first_name +
+          "', '" +
+          dataJson.last_name +
+          "', '" +
+          dataJson.email +
+          "', '" +
+          dataJson.password +
+          "')";
+        console.log(query);
+        db.query(query, (err, results) => {
+          if (err) return reject(err);
+          return resolve(results);
+        });
+      } else {
+        reject("Email already exists");
+      }
+    });
+  });
+};
+
 module.exports = apiModel;
