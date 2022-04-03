@@ -54,3 +54,33 @@ router.post("/login", async (req, res, next) => {
     });
   }
 });
+
+router.post("/register", async (req, res, next) => {
+  // TO-DO: check if email already exists
+  try {
+    console.log(req.body.password);
+    let personaType = req.body.personaType;
+    delete req.body.personaType;
+    // Hash the password
+    req.body.password = hashedPassword(req.body.password);
+    let table = await checkPersona(personaType, res);
+    console.log(table);
+    if (!table) res.status(500).send("Persona not specified.");
+    else {
+      // Invoke the querybuilder
+      console.log(req.body);
+
+      await apiModel.register(req.body, table);
+      res.writeHead(200, {
+        "Content-Type": "text/plain",
+      });
+      res.end("Success");
+    }
+  } catch (e) {
+    // Server Error
+    console.error(e);
+    res.status(500).json({
+      error: e,
+    });
+  }
+});
