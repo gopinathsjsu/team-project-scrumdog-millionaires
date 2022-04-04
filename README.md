@@ -1,7 +1,7 @@
 # Scrumdog Millionaires
 
 # Team Members:
-Abhishek <br>
+Abhishek Ganesan <br>
 Adarsh Narasimha Murthy <br>
 Rooppesh Sarankapani <br>
 Suhas <br>
