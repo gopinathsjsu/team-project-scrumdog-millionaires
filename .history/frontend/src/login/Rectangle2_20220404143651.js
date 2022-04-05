@@ -1,5 +1,4 @@
-import React from "react";
-import "Rectangle2.css";
+import React from "react"
 
 const Rectangle2 = (props) => {
   return (
@@ -8,6 +7,10 @@ const Rectangle2 = (props) => {
         {props.b64NameKioqkioqkioq || "*********"}
       </span>
     </div>
-  );
-};
-export default Rectangle2;
+  )
+}
+export default Rectangle2
+
+<style>
+
+</style>

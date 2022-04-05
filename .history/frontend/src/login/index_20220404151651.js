@@ -8,7 +8,7 @@ import image1 from "../../../assets/image1.png";
 const index = (props) => {
   return (
     <div>
-      <div className="div-2">
+      <Grid className="div-2">
         <img className="img-1" src={image1} />
         <div className="div-3">
           <div className="div-4">

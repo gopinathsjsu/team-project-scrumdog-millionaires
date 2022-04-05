@@ -1,5 +1,4 @@
 import React from "react";
-import "LoginButton";
 
 const LoginButton = (props) => {
   return (

@@ -3,7 +3,7 @@ import LoginForm from "./LoginForm";
 import LoginButton from "./LoginButton";
 import "./index.css";
 
-import image1 from "../../../assets/image1.png";
+import image1 from "./image1.svg";
 
 const index = (props) => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import "Rectangle2.css";
+import "Reactangle2.css";
 
 const Rectangle2 = (props) => {
   return (

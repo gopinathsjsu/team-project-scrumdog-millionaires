@@ -13,7 +13,7 @@ const LoginForm = (props) => {
       <span className="span-6">{props.password || "Password"}</span>
       <div className="textfield-password-8">
         <span className="span-7">
-          {props.b64NameKioqkioqkioq || "Enter here..."}
+          {props.b64NameKioqkioqkioq || "*********"}
         </span>
       </div>
       <span className="span-8">

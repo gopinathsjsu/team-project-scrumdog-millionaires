@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import LoginButton from "./LoginButton";
 import "./index.css";
 
+//add asset path
 import image1 from "../../../assets/image1.png";
 
 const index = (props) => {

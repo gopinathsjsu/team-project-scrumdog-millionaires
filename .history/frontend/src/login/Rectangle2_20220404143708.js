@@ -1,6 +1,5 @@
 import React from "react";
-import "Rectangle2.css";
-
+import "Reac"
 const Rectangle2 = (props) => {
   return (
     <div className="textfield-password-8">
