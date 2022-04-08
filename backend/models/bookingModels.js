@@ -21,3 +21,52 @@ model.getHotelBookings = (table = DB_TABLE_BOOKINGS) => {
     });
   });
 };
+
+model.getUserBookings = (userId, table = DB_TABLE_BOOKINGS) => {
+  return new Promise((resolve, reject) => {
+    const query = `
+			SELECT 
+				b.*, 
+				r.name as room_name, r.room_type as room_type
+			FROM ${table} as b
+				JOIN rooms as r
+					on b.room_id = r.id
+			WHERE user_id = '${userId}'
+			AND
+			status IN ('confirmed', 'created')
+		`;
+    db.query(query, (err, hotel) => {
+      if (err) return reject(err);
+      return resolve(hotel);
+    });
+  });
+};
+
+model.create = (
+  user_id,
+  room_id,
+  price,
+  from_date,
+  to_date,
+  guest_count,
+  status,
+  table = DB_TABLE_BOOKINGS
+) => {
+  return new Promise((resolve, reject) => {
+    from_date = from_date.toISOString().replace("Z", "");
+    to_date = to_date.toISOString().replace("Z", "");
+
+    const query = `
+			INSERT
+			INTO ${table} 
+			(room_id, user_id, price, from_date, to_date, guest_count, status)
+			VALUES 
+			('${room_id}', '${user_id}', '${price}', '${from_date}', '${to_date}', '${guest_count}', '${status}');
+		`;
+
+    db.query(query, (err, booking) => {
+      if (err) return reject(err);
+      resolve(booking);
+    });
+  });
+};
