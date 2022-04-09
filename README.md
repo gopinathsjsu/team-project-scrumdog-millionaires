@@ -48,4 +48,6 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/Pro
  
  
   * Simplicity
+  
+  * Courage
 
