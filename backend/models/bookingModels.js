@@ -70,3 +70,19 @@ model.create = (
     });
   });
 };
+
+model.getByID = (bookingID, userId, table = DB_TABLE_BOOKINGS) => {
+  return new Promise((resolve, reject) => {
+    // if userId {};
+
+    const query = `
+			SELECT *
+			FROM ${table}
+			WHERE id = '${bookingID}'
+		`;
+    db.query(query, (err, booking) => {
+      if (err) return reject(err);
+      resolve(booking);
+    });
+  });
+};
