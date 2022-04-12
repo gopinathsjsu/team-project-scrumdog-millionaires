@@ -86,3 +86,44 @@ model.getByID = (bookingID, userId, table = DB_TABLE_BOOKINGS) => {
     });
   });
 };
+
+model.getBookingsByDates = (
+  startDate,
+  endDate,
+  roomId,
+  table = DB_TABLE_BOOKINGS
+) => {
+  return new Promise((resolve, reject) => {
+    const bookingStart = startDate.toISOString().replace("Z", "");
+    const bookingEnd = endDate.toISOString().replace("Z", "");
+
+    const query = `
+		SELECT *
+		FROM ${table}
+		WHERE (to_date > '${bookingStart}' AND from_date < '${bookingEnd}' AND room_id = '${roomId}')
+		`;
+    db.query(query, (err, booking) => {
+      if (err) return reject(err);
+      resolve(booking);
+    });
+  });
+};
+
+model.updateByID = (
+  booking_id,
+  spaceSeperatedUpdateQueryString,
+  table = DB_TABLE_BOOKINGS
+) => {
+  return new Promise((resolve, reject) => {
+    const query = `
+			UPDATE ${table}
+			SET ${spaceSeperatedUpdateQueryString}
+			WHERE id = '${booking_id}'`;
+    db.query(query, (err, booking) => {
+      if (err) return reject(err);
+      resolve(booking);
+    });
+  });
+};
+
+module.exports = model;
