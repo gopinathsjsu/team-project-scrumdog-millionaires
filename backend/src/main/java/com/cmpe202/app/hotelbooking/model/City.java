@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,10 +25,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity @JsonAutoDetect
-@Table(name = "City")
+@Table(name = "City",catalog = "hotel_app")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","$$_hibernate_interceptor"})
 public class City {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "city_id")
 	private int id;
 	
@@ -39,7 +41,5 @@ public class City {
 	@JoinColumn(name="state_id",referencedColumnName = "state_id")
 	private State state;
 	
-	@OneToOne(mappedBy = "city", fetch = FetchType.LAZY,
-            cascade = CascadeType.MERGE)
-    private Address address;
+
 }

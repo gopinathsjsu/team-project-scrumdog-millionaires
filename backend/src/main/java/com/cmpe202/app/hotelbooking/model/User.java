@@ -9,12 +9,14 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -37,14 +39,13 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Inheritance
-@DiscriminatorColumn(name="user_type")
-@Table(name = "user")
+@Table(name = "user",catalog = "hotel_app")
 @JsonAutoDetect
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","$$_hibernate_interceptor"})
 public class User {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USER_ID")
 	private int id;
 	
@@ -68,14 +69,14 @@ public class User {
 	 @Column(name = "PASSWORD")
 	 private String password;
 	 
-	 @Column(name = "USER_CREATED_ON")
+	 @Column(name = "USER_CREATED_ON",nullable = false, updatable = false)
 	 @CreationTimestamp
 	 private Timestamp userCreatedOn;
 	 
 	 @Column(name = "USER_END_DATE")
 	 private Date userEndDate;
 	 
-	 @Column(name="USER_MODIFIED_ON",columnDefinition = "now()")
+	 @Column(name="USER_MODIFIED_ON")
 	 @UpdateTimestamp
 	 private Timestamp  userModiedfOn;
 	 
@@ -86,8 +87,17 @@ public class User {
 	@JoinColumn(name="ADDRESS_ID",referencedColumnName = "address_id")
 	private Address address;
 	
+	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="HOTEL_EMP_ID",referencedColumnName = "HOTEL_EMP_ID")
+	private HotelEmployee hotelEmployee;
+	
+	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="POINTS_ID",referencedColumnName = "POINTS_ID")
+	private CustomerPoints points;
+	
+	
 	 @ManyToMany(cascade = CascadeType.MERGE)
 	 @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	 private Set<Role> roles;
+	 private List<Role> roles;
 	 
 }

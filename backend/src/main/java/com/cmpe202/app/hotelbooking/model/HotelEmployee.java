@@ -1,5 +1,9 @@
 package com.cmpe202.app.hotelbooking.model;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -24,23 +27,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "HOTEL_EMPLOYEE",catalog = "HOTEL_APP")
 @JsonAutoDetect
-@Table(name = "state",catalog = "hotel_app")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","$$_hibernate_interceptor"})
-public class State {
+public class HotelEmployee{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "state_id")
-	private int id;
+	@Column(name = "HOTEL_EMP_ID")
+	private int hotelEmplyeeId;
 	
-	@Column(name = "state_name")
-	@NotEmpty(message = "*Please enter your state")
-	private String stateName;
+	@Column(name = "HOTEL_ID")
+	private int hotel;
 	
-	@Column(name = "country")
-	@NotEmpty(message = "*Please enter your country")
-	private String country;
-	
-
+	/*
+	 * @JsonIgnoreProperties
+	 * 
+	 * @OneToOne(mappedBy = "hotelEmployee", cascade = CascadeType.ALL) private User
+	 * user;
+	 */
 }
