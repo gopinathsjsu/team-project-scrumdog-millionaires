@@ -11,7 +11,7 @@ Suhas <br>
 
 - Frontend - ReactJS, Redux
 - Backend - Java, Spring framework
-- Database - Cockroach DB
+- Database - MySQL
 - Cloud -
 - Postman - API Testing
 - Project Management Tools:
