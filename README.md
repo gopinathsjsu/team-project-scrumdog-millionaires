@@ -41,7 +41,7 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/doc
 
 # Burndown Chart
 
-https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/Project_documents/BurnDown_Chart.xlsx
+https://docs.google.com/spreadsheets/d/1Wn4mJ8M1TZHlk2BE8Ncxz1d8peQ731jEm7CSC8-Jl0Y/edit?usp=sharing
 
 # Areas of contribution:
 
