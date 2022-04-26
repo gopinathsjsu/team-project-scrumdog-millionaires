@@ -49,4 +49,45 @@ class PricingService {
     if (festival in FESTIVALS) return surge;
     return 0;
   }
+  static surge_charge(surgeInfo) {
+    const { start, end, week_end_surge, festival_surge } = surgeInfo;
+
+    let charge = 0;
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    for (
+      let date = startDate;
+      date <= endDate;
+      date.setDate(date.getDate() + 1)
+    ) {
+      charge += Math.max(
+        this.weekend_surge(date, week_end_surge),
+        this.festival_surge(date, festival_surge)
+      );
+    }
+
+    console.log("Total Surge = ", charge);
+    return charge;
+  }
+
+  static async customer_rewards_static(userId) {
+    const bookings = await bookingModel.getUserBookings(userId);
+    let rewards = 0;
+    if (Array.isArray(bookings) && bookings.length > 0) {
+      if (bookings.length <= 3) {
+        rewards = 0.1;
+      } else if (bookings.length <= 5) {
+        rewards = 0.15;
+      } else if (bookings.length <= 10) {
+        rewards = 0.18;
+      } else if (bookings.length <= 20) {
+        rewards = 0.2;
+      } else {
+        rewards = 0.22;
+      }
+    }
+
+    return rewards;
+  }
 }
