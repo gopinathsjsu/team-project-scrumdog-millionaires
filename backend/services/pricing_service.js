@@ -90,4 +90,51 @@ class PricingService {
 
     return rewards;
   }
+  async customer_rewards(userId) {
+    const bookings = await bookingModel.getUserBookings(userId);
+    let rewards = 0;
+    if (Array.isArray(bookings) && bookings.length > 0) {
+      if (bookings.length <= 3) {
+        rewards = 0.1;
+      } else if (bookings.length <= 5) {
+        rewards = 0.15;
+      } else if (bookings.length <= 10) {
+        rewards = 0.18;
+      } else if (bookings.length <= 20) {
+        rewards = 0.2;
+      } else {
+        rewards = 0.22;
+      }
+    }
+
+    return rewards;
+  }
+
+  static get_base_fare(base_price, start, end) {
+    let fare = 0;
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    for (
+      let date = startDate;
+      date <= endDate;
+      date.setDate(date.getDate() + 1)
+    ) {
+      fare += base_price;
+    }
+
+    return fare;
+  }
+
+  static calculateRoomPrice(pricingDetails) {
+    const { base_fare, guest_charge, surge_charge, customer_rewards } =
+      pricingDetails;
+    console.log("calculateRoomPrice:: Details = ", pricingDetails);
+    const price =
+      base_fare + guest_charge + surge_charge - customer_rewards * base_fare;
+    console.log("Pricing Details =", pricingDetails, price);
+    return price;
+  }
 }
+
+module.exports = PricingService;
