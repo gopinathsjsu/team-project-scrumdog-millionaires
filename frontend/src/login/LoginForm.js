@@ -6,9 +6,7 @@ const LoginForm = (props) => {
     <div className="div-6">
       <span className="span-4">{props.email || "Email"}</span>
       <div className="textfield-7">
-        <span className="span-5">
-          {props.johnSnowGmailCom || "Enter here..."}
-        </span>
+        <span className="span-5">{props.name || "Enter here..."}</span>
       </div>
       <span className="span-6">{props.password || "Password"}</span>
       <div className="textfield-password-8">
