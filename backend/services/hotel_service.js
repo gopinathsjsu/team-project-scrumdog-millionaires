@@ -30,4 +30,25 @@ class HotelService {
       return HTTP_500();
     }
   }
+  async updateHotelById(hotel_id, updateReq) {
+    try {
+      let hotel = await model.getHotelsByID(hotel_id);
+      if (!hotel) return HTTP_RES(404, "No hotel found");
+
+      if (!updateReq.name) return HTTP_RES(400, "Invalid Update Request");
+
+      const { name } = updateReq;
+      await model.updateHotelByID(hotel_id, model.updateRequestactory(name));
+
+      let updatedHotel = await model.getHotelsByID(hotel_id);
+      return HTTP_RES(200, "Updated Hotel", updatedHotel);
+    } catch (err) {
+      console.error(
+        `HotelService::getHotelsByID/${hotel_id}::Uncaught exception\n, ${err}`
+      );
+      return HTTP_500();
+    }
+  }
 }
+
+module.exports = HotelService;
