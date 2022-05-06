@@ -9,11 +9,6 @@ const {
 } = require("./../Utilities/http_utils");
 
 class BookingService {
-  /**
-   * @description GET /hotels
-   * consumed by both users and hotels
-   */
-
   constructor() {
     this.FETCHED_BOOKINGS = "Fetched Bookings";
     this.AMMENITIES = {
@@ -29,5 +24,22 @@ class BookingService {
       double: "Double",
       suite: "Suite",
     };
+  }
+
+  async getHotelBookings() {
+    try {
+      const bookings = await model.getHotelBookings();
+      return {
+        status: 200,
+        data: bookings,
+        msg: this.FETCHED_BOOKINGS,
+      };
+    } catch (err) {
+      console.error(
+        "BookingService::getHotelBookings::Uncaught exception\n",
+        err
+      );
+      return HTTP_500();
+    }
   }
 }
