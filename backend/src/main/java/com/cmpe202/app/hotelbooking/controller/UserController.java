@@ -23,7 +23,7 @@ import com.cmpe202.app.hotelbooking.model.User;
 import com.cmpe202.app.hotelbooking.service.UserService;
 
 @RestController
-public class MainController {
+public class UserController {
 	
 	@Autowired
     private UserService userService;

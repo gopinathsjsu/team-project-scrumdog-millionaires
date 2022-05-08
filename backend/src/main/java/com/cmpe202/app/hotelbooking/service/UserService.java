@@ -63,8 +63,11 @@ public class UserService {
     
     
     public User createUser(User user) {
+    	 System.out.println("In create user" +user.getPassword());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
+        
+       
         Calendar calendar = Calendar.getInstance();
         java.util.Date now = calendar.getTime();
         Timestamp currentTimestamp  = new Timestamp(now.getTime());
