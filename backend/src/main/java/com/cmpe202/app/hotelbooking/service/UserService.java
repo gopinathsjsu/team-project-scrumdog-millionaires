@@ -1,21 +1,11 @@
 package com.cmpe202.app.hotelbooking.service;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.sql.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -23,10 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cmpe202.app.hotelbooking.model.Address;
-import com.cmpe202.app.hotelbooking.model.City;
 import com.cmpe202.app.hotelbooking.model.CustomerPoints;
 import com.cmpe202.app.hotelbooking.model.Role;
-import com.cmpe202.app.hotelbooking.model.State;
+
 import com.cmpe202.app.hotelbooking.model.User;
 import com.cmpe202.app.hotelbooking.repository.RoleRepository;
 import com.cmpe202.app.hotelbooking.repository.UserRepository;
@@ -66,12 +55,7 @@ public class UserService {
     	 System.out.println("In create user" +user.getPassword());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
-        
-       
-        Calendar calendar = Calendar.getInstance();
-        java.util.Date now = calendar.getTime();
-        Timestamp currentTimestamp  = new Timestamp(now.getTime());
-        user.setUserCreatedOn(currentTimestamp);
+
         List<Role> roles=user.getRoles();
         Role role=roles.get(0);
         if(role.getRole().equals("CUSTOMER")) {
@@ -96,17 +80,12 @@ public class UserService {
     	Address curAddress=curUser.getAddress();
     	Address newAddress=user.getAddress();
     	if(curAddress!=null) {
-    	curAddress.setAddress1(newAddress.getAddress1());
-    	curAddress.setAddress2(newAddress.getAddress2());
-    	curAddress.setLandmark(newAddress.getLandmark());
-    	curAddress.setPincode(newAddress.getPincode());
-
-    	if(curAddress.getCity()!=null) {
-    	curAddress.getCity().setCityName(newAddress.getCity().getCityName());
-    	if(curAddress.getCity().getState()!=null) {
-        	curAddress.getCity().getState().setStateName(newAddress.getCity().getState().getStateName());
-    	}
-    	}
+    	curAddress.setNumber(newAddress.getNumber());
+    	curAddress.setStreet(newAddress.getState());
+    	curAddress.setCity(newAddress.getCity());
+    	curAddress.setZip(newAddress.getZip());
+    	
+    	curUser.setAddress(newAddress);
     	
     	}
     	userRepository.save(curUser);

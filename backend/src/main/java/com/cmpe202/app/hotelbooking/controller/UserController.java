@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cmpe202.app.hotelbooking.POJOs.MessageResponse;
 import com.cmpe202.app.hotelbooking.model.User;
+import com.cmpe202.app.hotelbooking.repository.UserRepository;
 import com.cmpe202.app.hotelbooking.service.UserService;
 
 @RestController
@@ -39,49 +42,36 @@ public class UserController {
 			consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	 @ResponseBody
-	public String createNewUser(@RequestBody @Valid User user,
-			
-			BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
+	public ResponseEntity<?> createNewUser(@RequestBody @Valid User user) {
+     
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the user name provided");
-        }
-        if (bindingResult.hasErrors()) {
-           // modelAndView.setViewName("registration");
-        	throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        } else {
-        	try {
-            userService.createUser(user);
-        	}
-        	catch(javax.validation.ConstraintViolationException e) {
-            	throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-
-        	}
-			/*
-			 * modelAndView.addObject("successMessage",
-			 * "User has been registered successfully"); modelAndView.addObject("user", new
-			 * User()); modelAndView.setViewName("registration");
-			 */
-            return "Success";
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: a user with this email already exists"));
 
         }
-        //return modelAndView;
-    }
+        if(user.getRoles()==null||user.getRoles().isEmpty()) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: no role specified for the user"));
+
+        }
+        userService.createUser(user);
+        
+		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+
+	}
 	
-	@RequestMapping(value = "/updateuser/{id}", method = RequestMethod.POST,
+	@RequestMapping(value = "/updateuser/{id}", method = RequestMethod.PUT,
 			consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
 	 @ResponseBody
-	public void updateUser(@RequestBody @Valid User user,
+	public ResponseEntity<?> updateUser(@RequestBody @Valid User user,
 			@PathVariable("id") String id) {
 		User userExists = userService.findUserByID(Integer.parseInt(id)).orElseThrow(() -> new EntityNotFoundException("Invalid Team ID"));
 		 if (userExists == null) {
-			 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+				return ResponseEntity.badRequest().body(new MessageResponse("Error: user does not exist"));
 		 }else {
 			 userService.updateUser(user,Integer.parseInt(id));
+				return ResponseEntity.ok(new MessageResponse("User updated successfully!"));
+
 		 }
 	}
 	

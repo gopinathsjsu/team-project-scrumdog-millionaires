@@ -1,19 +1,17 @@
 package com.cmpe202.app.hotelbooking.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+/**
+* Represents a player/organization/event address
+*
+* @author  Adarsh Murthy
+* @version 1.0
+* @since   2021-12-04 
+*/
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import javax.persistence.Embeddable;
+
+import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,34 +20,35 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity @JsonAutoDetect
-@Table(name = "Address",catalog = "hotel_app")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","$$_hibernate_interceptor"})
-public class Address {
+@Embeddable
+@AllArgsConstructor
+@Component
+public class Address implements Serializable{
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "address_id")
-	private int id;
+	/**
+	 * The street name of the Event address
+	 */
+	private String street;
 	
-	@Column(name = "address1")
-	@NotEmpty(message = "*Please enter your address")
-	private String address1;
+	/**
+	 * The apt number of the Event address
+	 */
+	private String number;
 	
-	@Column(name = "address2")
-	private String address2;
+	/**
+	 * The city name of the Event address
+	 */
+	private String city;
 	
-	@Column(name = "landmark")
-	private String landmark;
+	/**
+	 * The state name of the Event address
+	 */
+	private String state;
 	
-	@Column(name = "pincode")
-	private String pincode;
-	
-	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
-	@JoinColumn(name="city_id",referencedColumnName = "city_id")
-	private City city;
-	
+	/**
+	 * The zip of the Event address
+	 */
+	private String zip;
 	
 }
