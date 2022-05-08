@@ -14,7 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.cmpe202.app.hotelbooking.Service.MyUserDetailsService;
+import com.cmpe202.app.hotelbooking.service.MyUserDetailsService;
 
 
 
@@ -29,14 +29,30 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MyUserDetailsService userDetailsService;
+    
+    @Autowired
+    DataSource datasource;
 
 
+    
+    
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(bCryptPasswordEncoder);
+               
+    	System.out.println("Inside JDBC auth");
+        auth.jdbcAuthentication().dataSource(datasource).passwordEncoder(new BCryptPasswordEncoder())
+        .usersByUsernameQuery(
+                "SELECT user_email, password, active from user where user_email = ?")
+            .authoritiesByUsernameQuery(
+                "select u.user_email, r.role from user u,"
+                + " user_role ur, role r where u.user_id=ur.user_id and"
+                + "  ur.role_id = r.role_id and u.user_email=?"
+            );
+    	
+    	auth
+                    .userDetailsService(userDetailsService)
+                    .passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -45,16 +61,45 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         String loginPage = "/login";
         String logoutPage = "/logout";
 
+      /*  http.authorizeRequests()
+        .antMatchers("/login**").permitAll()
+        .antMatchers("/healthcheck**").permitAll()
+        .antMatchers("/registeruser").permitAll()
+        .antMatchers("/updateuser/**").permitAll()
+        .antMatchers("/user/**").permitAll()
+        .antMatchers("/user/**").permitAll()
+        .and()
+            .formLogin().permitAll()
+            .and()
+            .logout().permitAll(); */
+        
+        
         http.
+        authorizeRequests()
+        .antMatchers("/").permitAll()
+        .antMatchers(loginPage).permitAll()
+        .antMatchers("/registeruser").permitAll()
+        .antMatchers("/updateuser/**").permitAll()
+        .antMatchers("/user/**").permitAll()
+        .and().csrf().disable()
+        .formLogin().defaultSuccessUrl("/user/1")
+        
+        .permitAll()
+        .and().logout()
+        .logoutRequestMatcher(new AntPathRequestMatcher(logoutPage))
+        .logoutSuccessUrl(loginPage).and().exceptionHandling();
+        
+        /*http.
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers(loginPage).permitAll()
-                .antMatchers("/registration").permitAll()
+                .antMatchers("/registeruser").permitAll()
+                .antMatchers("/updateuser/**").permitAll()
+                .antMatchers("/user/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .anyRequest()
-                .authenticated()
+                
                 .and().csrf().disable()
-                .formLogin()
+                .formLogin().permitAll()
                 .loginPage(loginPage)
                 .loginPage("/")
                 .failureUrl("/login?error=true")
@@ -63,8 +108,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher(logoutPage))
-                .logoutSuccessUrl(loginPage).and().exceptionHandling();
+                .logoutSuccessUrl(loginPage).and().exceptionHandling();*/
     }
+    
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {
