@@ -79,7 +79,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(loginPage).permitAll()
         .antMatchers("/registeruser").permitAll()
         .antMatchers("/updateuser/**").permitAll()
-        .antMatchers("/user/**").permitAll()
+        .antMatchers("/user/**").permitAll().antMatchers("/api/hotels/**").permitAll()
+
+
         .and().csrf().disable()
         .formLogin().defaultSuccessUrl("/user/1")
         
