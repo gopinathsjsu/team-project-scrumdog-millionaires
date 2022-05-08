@@ -1,0 +1,20 @@
+﻿{
+    "firstName":"Adarsh",
+    "middleName":"Narasimha"
+    "lastName":"Murthy",
+    "email":"adarsh@gmail.com",
+    "password":"hellohelloooo",
+    "address":{
+        "address1":"101 Washington Square",
+        "adress2":"Almaden",
+        "landmark":"city hall",
+        "pincode":"83123",
+        "city":{
+            "cityName":"Sane Jose",
+            "state":{
+                "stateName":"California",
+                "country":"USA"
+            }
+        }
+    }
+}
