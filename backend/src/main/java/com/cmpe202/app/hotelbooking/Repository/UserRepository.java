@@ -1,12 +1,13 @@
-package com.cmpe202.app.hotelbooking.Repository;
+package com.cmpe202.app.hotelbooking.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cmpe202.app.hotelbooking.Model.User;
+import com.cmpe202.app.hotelbooking.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmail(String email);
-    User findByFirstName(String firstName);
+    
+    Boolean existsByEmail(String email);
 }

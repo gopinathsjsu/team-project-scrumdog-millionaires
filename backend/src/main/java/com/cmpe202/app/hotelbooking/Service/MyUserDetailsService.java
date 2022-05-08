@@ -1,4 +1,4 @@
-package com.cmpe202.app.hotelbooking.Service;
+package com.cmpe202.app.hotelbooking.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,10 +12,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.cmpe202.app.hotelbooking.Model.Role;
-import com.cmpe202.app.hotelbooking.Model.User;
+import com.cmpe202.app.hotelbooking.model.Role;
+import com.cmpe202.app.hotelbooking.model.User;
 
 
 
@@ -27,15 +28,17 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String userName) {
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException{
         User user = userService.findUserByUserName(userName);
+        if(user==null)
+        	throw new UsernameNotFoundException("User is not present");
         List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
         return buildUserForAuthentication(user, authorities);
     }
 
-    private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
+    private List<GrantedAuthority> getUserAuthority(List<Role> list) {
         Set<GrantedAuthority> roles = new HashSet<>();
-        for (Role role : userRoles) {
+        for (Role role : list) {
             roles.add(new SimpleGrantedAuthority(role.getRole()));
         }
         return new ArrayList<>(roles);

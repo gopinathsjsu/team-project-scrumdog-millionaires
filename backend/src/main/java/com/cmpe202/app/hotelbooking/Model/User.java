@@ -1,4 +1,4 @@
-package com.cmpe202.app.hotelbooking.Model;
+package com.cmpe202.app.hotelbooking.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,12 +9,15 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -37,57 +40,65 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Inheritance
-@DiscriminatorColumn(name="user_type")
-@Table(name = "user")
+@Table(name = "user",catalog = "hotel_app")
 @JsonAutoDetect
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","$$_hibernate_interceptor"})
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID")
-    private int id;
-
-    @Column(name = "USER_EMAIL", unique=true)
-    @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
-    private String email;
-
-    @NotEmpty(message = "*Please provide your first name name")
-    @Column(name = "USER_FIRST_NAME")
-    private String firstName;
-
-    @Column(name = "USER_MIDDLE_NAME")
-    private String middleName;
-
-    @NotEmpty(message = "*Please provide your last name")
-    @Column(name = "USER_LAST_NAME")
-    private String lastName;
-
-    @NotEmpty(message = "*Please provide a password")
-    @Column(name = "PASSWORD")
-    private String password;
-
-    @Column(name = "USER_CREATED_ON")
-    @CreationTimestamp
-    private Timestamp userCreatedOn;
-
-    @Column(name = "USER_END_DATE")
-    private Date userEndDate;
-
-    @Column(name="USER_MODIFIED_ON",columnDefinition = "now()")
-    @UpdateTimestamp
-    private Timestamp  userModiedfOn;
-
-    @Column(name="ACTIVE")
-    private boolean active;
-
-    @OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name="ADDRESS_ID",referencedColumnName = "address_id")
-    private Address address;
-
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
-
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "USER_ID")
+	private int id;
+	
+	 @Column(name = "USER_EMAIL", unique=true)
+	 @Email(message = "*Please provide a valid Email")
+	 @NotEmpty(message = "*Please provide an email")
+	 private String email;
+	 
+	 @NotEmpty(message = "*Please provide your first name name")
+	 @Column(name = "USER_FIRST_NAME")
+	 private String firstName;
+	 
+	 @Column(name = "USER_MIDDLE_NAME")
+	 private String middleName;
+	 
+	 @NotEmpty(message = "*Please provide your last name")
+	 @Column(name = "USER_LAST_NAME")
+	 private String lastName;
+	 
+	 @NotEmpty(message = "*Please provide a password")
+	 @Column(name = "PASSWORD")
+	 private String password;
+	 
+	 @Column(name = "USER_CREATED_ON",nullable = false, updatable = false)
+	 @CreationTimestamp
+	 private Timestamp userCreatedOn;
+	 
+	 @Column(name = "USER_END_DATE")
+	 private Date userEndDate;
+	 
+	 @Column(name="USER_MODIFIED_ON")
+	 @UpdateTimestamp
+	 private Timestamp  userModiedfOn;
+	 
+	 @Column(name="ACTIVE")
+	 private boolean active;
+	 
+	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="ADDRESS_ID",referencedColumnName = "address_id")
+	private Address address;
+	
+	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="HOTEL_EMP_ID",referencedColumnName = "HOTEL_EMP_ID")
+	private HotelEmployee hotelEmployee;
+	
+	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="POINTS_ID",referencedColumnName = "POINTS_ID")
+	private CustomerPoints points;
+	
+	
+	 @ManyToMany(cascade = CascadeType.MERGE)
+	 @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	 private List<Role> roles;
+	 
 }
