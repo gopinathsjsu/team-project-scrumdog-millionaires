@@ -56,16 +56,18 @@ public class UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
 
-        List<Role> roles=user.getRoles();
+      /*  List<Role> roles=user.getRoles();
         Role role=roles.get(0);
         if(role.getRole().equals("CUSTOMER")) {
         	user.setHotelEmployee(null);
-        	user.setPoints(new CustomerPoints(0,0));
+        	CustomerPoints cpoints=new CustomerPoints();
+        	cpoints.setPoints(0);
+        	user.setPoints(cpoints);
         }else if(role.getRole().equals("EMPLOYEE")) {
         	user.setPoints(null);
         }
         Role userRole = roleRepository.findByRole(role.getRole());
-        user.setRoles(new ArrayList<Role>(Arrays.asList(userRole)));
+        user.setRoles(new ArrayList<Role>(Arrays.asList(userRole)));*/
         
         return userRepository.save(user);
     }
@@ -79,7 +81,7 @@ public class UserService {
     	curUser.setMiddleName(user.getMiddleName());
     	Address curAddress=curUser.getAddress();
     	Address newAddress=user.getAddress();
-    	if(curAddress!=null) {
+    	if(newAddress!=null) {
     	curAddress.setNumber(newAddress.getNumber());
     	curAddress.setStreet(newAddress.getState());
     	curAddress.setCity(newAddress.getCity());

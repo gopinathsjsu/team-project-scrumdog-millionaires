@@ -15,10 +15,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.cmpe202.app.hotelbooking.service.MyUserDetailsService;
 
-
-
-
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -79,6 +75,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(loginPage).permitAll()
         .antMatchers("/registeruser").permitAll()
         .antMatchers("/updateuser/**").permitAll()
+        .antMatchers("/api/room/**").permitAll()
         .antMatchers("/user/**").permitAll().antMatchers("/api/hotels/**").permitAll()
 
 

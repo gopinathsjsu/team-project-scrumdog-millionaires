@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -33,6 +34,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user", catalog = "hotel_app")
 @JsonAutoDetect
+@ToString
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "$$_hibernate_interceptor" })
 public class User {
 
@@ -69,6 +71,7 @@ public class User {
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "HOTEL_EMP_ID", referencedColumnName = "HOTEL_EMP_ID")
+	@JsonIgnoreProperties("hotel")
 	private HotelEmployee hotelEmployee;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
