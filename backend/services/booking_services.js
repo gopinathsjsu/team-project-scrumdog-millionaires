@@ -203,4 +203,39 @@ class BookingService {
       return HTTP_500();
     }
   }
+
+  async cancelBooking(bookingId, userId) {
+    try {
+      const bookings = await model.getByID(bookingId);
+      if (Array.isArray(bookings) && bookings.length == 0) {
+        console.error(
+          "BookingService::cancelBooking:: No such booking",
+          bookingId
+        );
+        return HTTP_404("No such booking");
+      }
+
+      let [booking] = bookings;
+
+      if (booking.user_id != userId) {
+        console.error(
+          "BookingService::cancelBooking:: Booking user != authenticated user ",
+          booking.user_id,
+          userId
+        );
+        return HTTP_RES(403, "You are not allowed to do this");
+      }
+
+      const DELETE_QUERY = `
+                status='cancelled'
+            `;
+
+      booking.status = "cancelled";
+      const updated = await model.updateByID(bookingId, DELETE_QUERY);
+      return HTTP_RES(200, "Success", booking);
+    } catch (err) {
+      console.error("BookingService::cancelBooking::Uncaught exception\n", err);
+      return HTTP_500();
+    }
+  }
 }
