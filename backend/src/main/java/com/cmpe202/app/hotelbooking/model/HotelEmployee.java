@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,8 +39,14 @@ public class HotelEmployee{
 	@Column(name = "HOTEL_EMP_ID")
 	private int hotelEmplyeeId;
 	
-	@Column(name = "HOTEL_ID")
-	private int hotel;
+
+	
+	@OneToOne(mappedBy="hotelEmployee")
+	private User user;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	 @JoinColumn(name = "hotel_id")
+	private Hotel hotel;
 	
 	/*
 	 * @JsonIgnoreProperties

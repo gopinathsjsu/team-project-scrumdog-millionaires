@@ -6,6 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Getter
@@ -16,36 +21,45 @@ import javax.persistence.*;
 @Table(name = "hotel")
 public class Hotel {
 
-    enum hotelTypeEnum{
-        motel,
-        hotel,
-        BreadAndBreakfast,
-        fiveStar
-    }
+	enum hotelTypeEnum {
+		motel, hotel, BreadAndBreakfast, fiveStar
+	}
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	private String id;
 
-    //add description and phone num
+	// add description and phone num
 
-    @Column(name = "hotel_name")
-    private String hotelName;
+	@Column(name = "hotel_name")
+	private String hotelName;
 
-    @Column(name = "hotel_type")
-    private hotelTypeEnum hotelType;
+	@Column(name = "hotel_type")
+	private hotelTypeEnum hotelType;
 
-    @Column(name = "email_id")
-    private String emailId;
+	@Column(name = "email_id")
+	private String emailId;
 
-    @Column(name="description")
-    private String description;
+	@Column(name = "description")
+	private String description;
 
-    @Column(name="phoneNum")
-    private  String phoneNum;
+	@Column(name = "phoneNum")
+	private String phoneNum;
 
-    @Embedded
-    private Address address;
+	@Embedded
+	private Address address;
+
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.MERGE)
+	@JsonIgnoreProperties({"hotel","user"})
+	private Set<HotelEmployee> employees;
+	
+	@OneToMany(
+	        mappedBy = "hotel",
+	        cascade = CascadeType.MERGE,
+	        orphanRemoval = true
+	    )
+	@JsonIgnoreProperties({"hotel","roomType"})
+    private List<HotelRoomType> hotelRoomTypes;
 }
