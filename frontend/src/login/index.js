@@ -4,6 +4,7 @@ import LoginButton from "./LoginButton";
 import "./index.css";
 
 import image1 from "../../../assets/image1.png";
+import { Button } from "@material-ui/core";
 
 const index = (props) => {
   return (
@@ -19,7 +20,9 @@ const index = (props) => {
             <LoginForm />
             <LoginButton />
           </div>
-          <span className="span-3">Dont have an account? Join free today</span>
+          <Button className="span-3">
+            Dont have an account? Join free today
+          </Button>
         </div>
       </div>
     </div>
