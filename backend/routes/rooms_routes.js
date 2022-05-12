@@ -32,3 +32,23 @@ router.post("/", async (request, response) => {
     return response.status(500).send({ msg: "Internal  Server Error" });
   }
 });
+
+router.put("/:roomId", async (request, response) => {
+  const { params, body } = request;
+  const { roomId } = params;
+  try {
+    const { status, ...data } = await room_service.update(roomId, body);
+    return response.status(status).send({ ...data });
+  } catch (err) {
+    console.error(
+      `HotelRoutes::PUT /rooms/${roomId}:: Internal server error \n${err}`
+    );
+    return response.status(500).send({ msg: "Internal  Server Error" });
+  }
+});
+
+router.delete("/:roomId", async (request, response) => {
+  return response.status(501);
+});
+
+module.exports = router;
