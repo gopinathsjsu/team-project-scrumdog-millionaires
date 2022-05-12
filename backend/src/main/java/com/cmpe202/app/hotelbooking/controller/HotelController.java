@@ -5,7 +5,7 @@ package com.cmpe202.app.hotelbooking.controller;
 import com.cmpe202.app.hotelbooking.POJOs.MessageResponse;
 import com.cmpe202.app.hotelbooking.exception.ResourceNotFoundException;
 import com.cmpe202.app.hotelbooking.model.Hotel;
-import com.cmpe202.app.hotelbooking.model.HotelRoomType;
+import com.cmpe202.app.hotelbooking.model.Room;
 import com.cmpe202.app.hotelbooking.model.Address;
 import com.cmpe202.app.hotelbooking.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +80,7 @@ public class HotelController {
 		}
 		System.out.println(hotelid);
 		Hotel hotel=hotelRepository.getById(hotelid);
-		List<HotelRoomType> hotelRoomType=hotel.getHotelRoomTypes();
+		List<Room> hotelRoomType=hotel.getHotelRoomTypes();
 		if(hotelRoomType.size()==0) {
 	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

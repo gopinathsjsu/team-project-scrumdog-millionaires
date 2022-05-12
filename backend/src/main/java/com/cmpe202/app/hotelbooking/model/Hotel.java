@@ -61,5 +61,5 @@ public class Hotel {
 	        orphanRemoval = true
 	    )
 	@JsonIgnoreProperties({"hotel","roomType"})
-    private List<HotelRoomType> hotelRoomTypes;
+    private List<Room> hotelRoomTypes;
 }
