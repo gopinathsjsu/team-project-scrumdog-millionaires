@@ -97,9 +97,14 @@ public class RoomService {
 		//HotelRoomType hotelRoomType=new HotelRoomType();
 		Hotel hotel=hotelRepository.getById(hotelId);
 		RoomType rt=roomTypeRepository.findByRoomType(roomType);
-		
+	
 		Room hotelRoomType=
 		roomRepository.getById(new HotelRoomTypeId(hotel.getId(),rt.getId()));
+		
+		if(hotelRoomType==null) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: invalid selection"));
+
+		}
 		
 		//hotelRoomType.setHotel(hotel);
 		
