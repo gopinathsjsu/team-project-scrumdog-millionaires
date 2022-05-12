@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @Builder
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "ROOM_TYPE", catalog = "hotel_app")
+@ToString
 @JsonAutoDetect
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "$$_hibernate_interceptor" })
 public class RoomType {
@@ -40,5 +42,6 @@ public class RoomType {
 	private int roomCapacity;
 
 	@OneToMany(mappedBy = "roomType", cascade = CascadeType.MERGE, orphanRemoval = true)
-	private List<HotelRoomType> hotelRoomTypes;
+	@JsonIgnoreProperties({"roomType"})
+	private List<Room> rooms;
 }
