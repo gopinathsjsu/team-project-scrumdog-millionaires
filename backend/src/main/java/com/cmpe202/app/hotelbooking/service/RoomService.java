@@ -219,7 +219,8 @@ public class RoomService {
 
 		}
 		
-		if(stDate.until(eDate,ChronoUnit.DAYS)>7) {
+		long daysBewteen=stDate.until(eDate,ChronoUnit.DAYS);
+		if(daysBewteen>7) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: More than 7 days selected"));
 
 		}
@@ -227,13 +228,8 @@ public class RoomService {
 		RoomType rt = roomTypeRepository.findByRoomType(roomType);
 
 		Room room = roomRepository.getById(new HotelRoomTypeId(hotelId, rt.getId()));
-		double weekendSurge = room.getWeekendSurge();
-		double holidaySurge = room.getHolidaySurge();
-		double vacationSurge = room.getVactionSurge();
 		BaseRoomPrice base = new BaseRoomPrice();
-		
-		
-		
+
 		VacationRoomPrice vacationPrice = new VacationRoomPrice();
 		WeekndRoomPrice weekendPrice = new WeekndRoomPrice();
 		HolidayRoomPrice holidayPrice = new HolidayRoomPrice();
@@ -246,8 +242,9 @@ public class RoomService {
 			totalPrice += vacationPrice.calculateRoomPrice(date, room);
 
 		}
+		double pricePerNight=Math.round(totalPrice/daysBewteen);
 
-		return ResponseEntity.ok(totalPrice);
+		return ResponseEntity.ok(pricePerNight);
 	}
 
 }
