@@ -1,6 +1,7 @@
 package com.cmpe202.app.hotelbooking.service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -202,10 +203,14 @@ public class RoomService {
 					.body(new MessageResponse("Error: Invalid Room Type for the given hotel"));
 		}
 		
-		
-		
-		LocalDate stDate = LocalDate.parse(startDate);
-		LocalDate eDate = LocalDate.parse(endDate);
+		LocalDate stDate,eDate;
+		try {
+		 stDate = LocalDate.parse(startDate);
+		 eDate = LocalDate.parse(endDate);
+		}catch(DateTimeParseException e) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Error: Invalid dates, use YYYY-MM-DD format"));
+		}
 		LocalDate currentDate = LocalDate.now();
 
 		if (stDate.isBefore(currentDate) || stDate.isAfter(eDate) || eDate.isBefore(currentDate)
