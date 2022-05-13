@@ -14,14 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.cmpe202.app.hotelbooking.POJOs.HotelRoomTypeReq;
-import com.cmpe202.app.hotelbooking.repository.HotelEmployeeRepository;
-import com.cmpe202.app.hotelbooking.repository.RoomRepository;
 import com.cmpe202.app.hotelbooking.service.RoomService;
-
-
-
 
 @RestController
 @RequestMapping("/api/room")
@@ -35,7 +29,7 @@ public class RoomController {
 			HotelRoomTypeReq roomTypeReq
 			){
 	return 	roomService.addHotelRooms( roomTypeReq.getHotelId(), roomTypeReq.getRoomType(),
-			roomTypeReq.getBasePrice(), roomTypeReq.getWeekendSurge(), roomTypeReq.getHolidaySurge(),
+			roomTypeReq.getBasePrice(), roomTypeReq.getVacationSurge(),roomTypeReq.getWeekendSurge(), roomTypeReq.getHolidaySurge(),
 			roomTypeReq.getRoomCount() );
 	}
 	 
@@ -44,7 +38,7 @@ public class RoomController {
 				HotelRoomTypeReq roomTypeReq
 				){
 		return 	roomService.updateHotelRooms( roomTypeReq.getHotelId(), roomTypeReq.getRoomType(),
-				roomTypeReq.getBasePrice(), roomTypeReq.getWeekendSurge(), roomTypeReq.getHolidaySurge(),
+				roomTypeReq.getBasePrice(),roomTypeReq.getVacationSurge(), roomTypeReq.getWeekendSurge(), roomTypeReq.getHolidaySurge(),
 				roomTypeReq.getRoomCount() );
 		}
 	 
@@ -62,6 +56,13 @@ public class RoomController {
 				endDate,@RequestParam int roomCount,@RequestParam int adultsPerRoom){
 	       return roomService.searchHotelRooms(city,LocalDate.parse(startDate), LocalDate.parse(endDate), roomCount, adultsPerRoom);
 	    }
+	 
+	 @GetMapping("/price")
+	 public ResponseEntity<?> getRoomPrice(@RequestParam("hotelid") String hotelId,@RequestParam("roomtype") String roomType,
+			 @RequestParam("startdate") String startDate,@RequestParam("enddate") String endDate){
+		 
+		 return roomService.getRoomPrice(hotelId, roomType, startDate, endDate);
+	 }
 	 
 
 }

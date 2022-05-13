@@ -139,7 +139,7 @@ public class UserController {
 	@ResponseBody
 	public ResponseEntity<?> updateUser(@Valid @RequestBody RegisterUserRequest userRequest, @PathVariable("id") String id) {
 		User userExists = userService.findUserByID(Integer.parseInt(id))
-				.orElseThrow(() -> new EntityNotFoundException("Invalid Team ID"));
+				.orElseThrow(() -> new EntityNotFoundException("Invalid user ID"));
 		if (userExists == null) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: user does not exist"));
 		} else {

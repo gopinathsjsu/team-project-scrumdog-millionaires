@@ -19,6 +19,8 @@ public class HotelRoomTypeReq {
 	@NotNull
 	Double basePrice;
 	
+	double vacationSurge;
+	
 	double weekendSurge;
 	
 	double holidaySurge;
