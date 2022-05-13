@@ -191,6 +191,24 @@ public class RoomService {
 
 		return ResponseEntity.ok(selectedrooms);
 	}
+	
+	public double calculateTotalRoomPrice(Room room,LocalDate stDate, LocalDate eDate) {
+		BaseRoomPrice base = new BaseRoomPrice();
+
+		VacationRoomPrice vacationPrice = new VacationRoomPrice();
+		WeekndRoomPrice weekendPrice = new WeekndRoomPrice();
+		HolidayRoomPrice holidayPrice = new HolidayRoomPrice();
+
+		vacationPrice.nextHandler(holidayPrice);
+		holidayPrice.nextHandler(weekendPrice);
+		weekendPrice.nextHandler(base);
+		double totalPrice = 0.0;
+		for (LocalDate date = stDate; date.isBefore(eDate); date = date.plusDays(1)) {
+			totalPrice += vacationPrice.calculateRoomPrice(date, room);
+
+		}
+		return totalPrice;
+	}
 
 	public ResponseEntity<?> getRoomPrice(String hotelId, String roomType, String startDate, String endDate) {
 
@@ -228,20 +246,8 @@ public class RoomService {
 		RoomType rt = roomTypeRepository.findByRoomType(roomType);
 
 		Room room = roomRepository.getById(new HotelRoomTypeId(hotelId, rt.getId()));
-		BaseRoomPrice base = new BaseRoomPrice();
-
-		VacationRoomPrice vacationPrice = new VacationRoomPrice();
-		WeekndRoomPrice weekendPrice = new WeekndRoomPrice();
-		HolidayRoomPrice holidayPrice = new HolidayRoomPrice();
-
-		vacationPrice.nextHandler(holidayPrice);
-		holidayPrice.nextHandler(weekendPrice);
-		weekendPrice.nextHandler(base);
-		double totalPrice = 0.0;
-		for (LocalDate date = stDate; date.isBefore(eDate); date = date.plusDays(1)) {
-			totalPrice += vacationPrice.calculateRoomPrice(date, room);
-
-		}
+		
+		double totalPrice=calculateTotalRoomPrice( room, stDate, eDate);
 		double pricePerNight=Math.round(totalPrice/daysBewteen);
 
 		return ResponseEntity.ok(pricePerNight);
