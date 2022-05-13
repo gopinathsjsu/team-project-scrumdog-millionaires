@@ -53,8 +53,12 @@ public class Room {
 	@Column(name="HOLIDAY_SURGE")
 	private double holidaySurge;
 	
+	@Column(name="VACATION_SURGE")
+	private double vactionSurge;
+	
 	
 	@Column(name="ROOM_COUNT")
 	private int roomCount;
+
 
 }
