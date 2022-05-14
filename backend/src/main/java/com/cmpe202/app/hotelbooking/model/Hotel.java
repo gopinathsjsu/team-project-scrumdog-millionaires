@@ -62,4 +62,9 @@ public class Hotel {
 	    )
 	@JsonIgnoreProperties({"hotel","roomType"})
     private List<Room> hotelRoomTypes;
+	
+	 @OneToMany(mappedBy="hotel",cascade = CascadeType.ALL,
+	            orphanRemoval = true)
+	    private List<HotelFacility> facilities;
+
 }

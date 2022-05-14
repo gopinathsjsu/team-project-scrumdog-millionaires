@@ -7,15 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.cmpe202.app.hotelbooking.POJOs.ReservationRequest;
 import com.cmpe202.app.hotelbooking.POJOs.ReservationUpdateReq;
 import com.cmpe202.app.hotelbooking.model.User;
 import com.cmpe202.app.hotelbooking.service.ReservationService;
+import com.cmpe202.app.hotelbooking.service.RoomService;
 import com.cmpe202.app.hotelbooking.service.UserService;
 
 @RestController
@@ -28,6 +30,9 @@ public class ReservationController {
 	
 	@Autowired
 	private ReservationService reservationService;
+	
+	@Autowired
+	private RoomService roomService;
 	
 	 @GetMapping("user/{userid}")
 	 ResponseEntity<?> getUserReservations(@PathVariable String userid){
@@ -49,5 +54,14 @@ public class ReservationController {
 		 return reservationService.getHotelReservations(hotelId);
 
 	 }
+	 
+	 @PostMapping
+	 ResponseEntity<?> makeReservations(@Valid @RequestBody ReservationRequest resevReq){
+		
+		System.out.println("In make reservation");
+		 return roomService.makeReservations(resevReq);
+
+	 }
+	 
 	
 }

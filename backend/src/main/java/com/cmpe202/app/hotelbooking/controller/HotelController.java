@@ -2,18 +2,23 @@ package com.cmpe202.app.hotelbooking.controller;
 
 
 
+import com.cmpe202.app.hotelbooking.POJOs.AddFacilityRequest;
 import com.cmpe202.app.hotelbooking.POJOs.MessageResponse;
 import com.cmpe202.app.hotelbooking.exception.ResourceNotFoundException;
 import com.cmpe202.app.hotelbooking.model.Hotel;
 import com.cmpe202.app.hotelbooking.model.Room;
-import com.cmpe202.app.hotelbooking.model.Address;
+
 import com.cmpe202.app.hotelbooking.repository.HotelRepository;
+import com.cmpe202.app.hotelbooking.service.FacilityService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import javax.validation.Valid;
 
 @CrossOrigin("*")
 @RestController
@@ -22,6 +27,9 @@ public class HotelController {
 
     @Autowired
     private HotelRepository hotelRepository;
+    
+    @Autowired
+    private FacilityService facilityService;
 
     @GetMapping
     public List<Hotel> getAllHotels(){
@@ -87,6 +95,40 @@ public class HotelController {
 		}else {
 			return ResponseEntity.ok(hotelRoomType);
 		}
+    }
+    
+    @PostMapping("{id}/facility")
+    public ResponseEntity<?> addHotelFacility(@PathVariable String id,@Valid @RequestBody AddFacilityRequest facilityReq) {
+    		
+    
+    	return facilityService.addHotelFacility(id,facilityReq.getFacilityName(),facilityReq.getPrice());
+    	
+    }
+    
+    
+    @PutMapping("{id}/facility")
+    public ResponseEntity<?> updateHotelFacility(@PathVariable String id,@Valid @RequestBody AddFacilityRequest facilityReq) {
+    		
+    
+    	return facilityService.updateHotelFacility(id,facilityReq.getFacilityName(),facilityReq.getPrice());
+    	
+    }
+    
+    @DeleteMapping("{id}/facility/{facility}")
+    public ResponseEntity<?> deleteHotelFacility(@PathVariable String id,@PathVariable String facility) {
+    		
+    
+    	return facilityService.deleteHotelFacility(id,facility);
+    	
+    }
+    
+    
+    @GetMapping("{id}/facility")
+    public ResponseEntity<?> getAllHotelFacilities(@PathVariable String id) {
+    		
+    
+    	return facilityService.getAllHotelFacilities(id);
+    	
     }
 
 }

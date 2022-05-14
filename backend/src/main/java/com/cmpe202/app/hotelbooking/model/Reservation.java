@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -44,22 +46,30 @@ public class Reservation {
 
 	private LocalDate endDate;
 
+	private LocalDate bookingDate;
+
 	int peopleCount;
 
 	@ManyToOne
-	@JsonIgnoreProperties({"hotel","roomType"})
+	@JsonIgnoreProperties({ "hotel", "roomType" })
 	Room room;
 
 	@ManyToOne
 	@JoinColumn(name = "CUSTOMER_ID")
-	@JsonIgnoreProperties({"address","roles","points","hotelEmployee"})
+	@JsonIgnoreProperties({ "address", "roles", "points", "hotelEmployee" })
 	User user;
 
 	int roomCount;
-	
+
 	@Enumerated(EnumType.STRING)
 	EStatus status;
-	
-	
+
+	double totalPrice;
+
+
+	@ManyToMany
+	@JoinTable(name = "reserv_hotel_facilities")
+	@JsonIgnoreProperties({ "hotel" })
+	List<HotelFacility> hotelfacilities;
 
 }

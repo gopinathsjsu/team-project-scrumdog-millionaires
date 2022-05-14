@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.cmpe202.app.hotelbooking.POJOs.FinalPriceQuoteRequest;
 import com.cmpe202.app.hotelbooking.POJOs.HotelRoomTypeReq;
 import com.cmpe202.app.hotelbooking.service.RoomService;
 
@@ -62,6 +64,13 @@ public class RoomController {
 			 @RequestParam("startdate") String startDate,@RequestParam("enddate") String endDate){
 		 
 		 return roomService.getRoomPrice(hotelId, roomType, startDate, endDate);
+	 }
+	 
+	 @PostMapping("/totalprice")
+	 public ResponseEntity<?> getRoomTotalPrice(@Valid @RequestBody FinalPriceQuoteRequest finalpriceReq
+			 ){
+		 
+		 return roomService.getTotalRoomPrice(finalpriceReq);
 	 }
 	 
 

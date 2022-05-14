@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cmpe202.app.hotelbooking.POJOs.CustomerPointsReq;
 import com.cmpe202.app.hotelbooking.POJOs.MessageResponse;
 import com.cmpe202.app.hotelbooking.POJOs.RegisterUserRequest;
 import com.cmpe202.app.hotelbooking.model.Address;
@@ -180,12 +181,12 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/user/{id}", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/user/{id}/points", method = RequestMethod.PUT, consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public ResponseEntity<?> updatePoints(@PathVariable("id") String id, @RequestParam("points") String points) {
+	public ResponseEntity<?> updatePoints(@PathVariable("id") String id, @RequestBody CustomerPointsReq cpoints) {
 		try {
-			userService.updatePoints(Integer.parseInt(id), Integer.parseInt(points));
+			userService.updatePoints(Integer.parseInt(id), cpoints.getPoints());
 
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: User not found"));

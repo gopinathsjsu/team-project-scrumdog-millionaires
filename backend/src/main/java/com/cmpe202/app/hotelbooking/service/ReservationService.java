@@ -1,6 +1,7 @@
 package com.cmpe202.app.hotelbooking.service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class ReservationService {
 		}
 	}
 
-	public ResponseEntity<?> updateReservation(String reservationId, String status) {
+	public ResponseEntity<?> updateReservation(String reservationId,String status) {
 		Reservation resv = null;
 		try {
 			resv = reservationRepository.findById(reservationId)
@@ -64,7 +65,7 @@ public class ReservationService {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: reservation not found"));
 
 		}
-
+		
 		EStatus resvStatus;
 		try {
 			resvStatus = EStatus.valueOf(status);
@@ -73,7 +74,7 @@ public class ReservationService {
 
 		}
 		resv.setStatus(resvStatus);
-
+	
 		Reservation newresv = reservationRepository.save(resv);
 
 		return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(newresv);
