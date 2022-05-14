@@ -97,3 +97,45 @@ router.get("/room-types", async (request, response) => {
     return response.status(500).send({ msg: "Internal  Server Error" });
   }
 });
+
+router.get("/get-estimate", async (request, response) => {
+  try {
+    const { query } = request;
+    const { start, end, roomId, numberOfGuests, userId } = query;
+    const { status, ...data } = await booking_service.estimatePrice(
+      roomId,
+      start,
+      end,
+      numberOfGuests,
+      userId
+    );
+    return response.status(status).send({ ...data });
+  } catch (err) {
+    console.error(
+      `BookingRoutes::GET /room-types:: Internal server error \n ${err}`
+    );
+    return response.status(500).send({ msg: "Internal  Server Error" });
+  }
+});
+
+/**
+ * ADMIN routes
+ */
+// router.use("/", SSecurity.authenticate_admin);
+
+// View bookings as admin
+router.get("/admin", async (request, response) => {
+  const { params } = request;
+  const { hotelId } = params;
+  try {
+    const { status, ...data } = await booking_service.getHotelBookings(hotelId);
+    return response.status(status).send({ ...data });
+  } catch (err) {
+    console.error(
+      `BookingRoutes::GET /bookings/hotels/${hotelId}:: Internal server error \n ${err}`
+    );
+    return response.status(500).send({ msg: "Internal  Server Error" });
+  }
+});
+
+module.exports = router;
