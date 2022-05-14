@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -161,8 +162,23 @@ public class UserController {
 
 		}
 	}
+	
 
+	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public ResponseEntity<?> getUser( @PathVariable("id") String id) {
+		User userExists = userService.findUserByID(Integer.parseInt(id))
+				.orElseThrow(() -> new EntityNotFoundException("Invalid user ID"));
+		if (userExists == null) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: user does not exist"));
 
+		}else {
+			User user=userService.getUser(Integer.parseInt(id));
+			return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(user);
+
+		}
+	}
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
@@ -176,4 +192,7 @@ public class UserController {
 		}
 		return ResponseEntity.ok(new MessageResponse("points updated successfully!"));
 	}
+	
+	
+	
 }
