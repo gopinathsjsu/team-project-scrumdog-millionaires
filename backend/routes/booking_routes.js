@@ -73,3 +73,27 @@ router.delete("/:booking_id", async (request, response) => {
     return response.status(500).send({ msg: "Internal  Server Error" });
   }
 });
+
+router.get("/ammenities", async (request, response) => {
+  try {
+    const { status, ...data } = await booking_service.getAmmenities();
+    return response.status(status).send({ ...data });
+  } catch (err) {
+    console.error(
+      `BookingRoutes::GET /ammenities:: Internal server error \n ${err}`
+    );
+    return response.status(500).send({ msg: "Internal  Server Error" });
+  }
+});
+
+router.get("/room-types", async (request, response) => {
+  try {
+    const { status, ...data } = await booking_service.getRoomTypes();
+    return response.status(status).send({ ...data });
+  } catch (err) {
+    console.error(
+      `BookingRoutes::GET /room-types:: Internal server error \n ${err}`
+    );
+    return response.status(500).send({ msg: "Internal  Server Error" });
+  }
+});
