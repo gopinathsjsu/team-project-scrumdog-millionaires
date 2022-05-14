@@ -37,7 +37,6 @@ router.post("/rooms/:room_id", async (request, response) => {
   }
 });
 
-// Update booking as a user
 router.put("/:booking_id", async (request, response) => {
   const { query, params, body } = request;
   const { userId } = query;
@@ -52,6 +51,24 @@ router.put("/:booking_id", async (request, response) => {
   } catch (err) {
     console.error(
       `BookingRoutes::PUT /bookings/${booking_id}:: Internal server error \n ${err}`
+    );
+    return response.status(500).send({ msg: "Internal  Server Error" });
+  }
+});
+
+router.delete("/:booking_id", async (request, response) => {
+  const { query, params } = request;
+  const { userId } = query;
+  const { booking_id } = params;
+  try {
+    const { status, ...data } = await booking_service.cancelBooking(
+      booking_id,
+      userId
+    );
+    return response.status(status).send({ ...data });
+  } catch (err) {
+    console.error(
+      `BookingRoutes::DELETE /bookings/${booking_id}:: Internal server error \n ${err}`
     );
     return response.status(500).send({ msg: "Internal  Server Error" });
   }
