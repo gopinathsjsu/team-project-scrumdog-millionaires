@@ -50,13 +50,11 @@ We regularly reviewed each other’s and provided comments for the author of the
 # Weekly Scrum Reports
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Project_Journal.pdf
 
-
 # Architecture 
 ![architecture](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/hotel-booking-architechture.jpg)
 
 # Use Case Diagram
 ![Use Case](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Hotel-Use-Case.jpg)
-
 
 # Activity Diagram
 ![activity diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Activity%20Diagram%20flow.png)
