@@ -50,11 +50,6 @@ We regularly reviewed each other’s and provided comments for the author of the
 # Weekly Scrum Reports
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Project_Journal.pdf
 
-# Burndown charts
-https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Burndown%20Chart.xlsx
-
-![burndown](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/burndown_diag.png)
-
 
 # Architecture 
 ![architecture](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/hotel-booking-architechture.jpg)
@@ -68,6 +63,11 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/doc
 
 # ER diagram
 ![ER diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/ER%20diagram.png)
+
+# Burndown charts
+https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Burndown%20Chart.xlsx
+
+![burndown](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/burndown_diag.png)
 
 # GitHub Repo Link:
 
