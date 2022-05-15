@@ -16,7 +16,7 @@ Develop a Hotel Reservation system with two personas Hotel Admin and Customer. T
 # Technology Stack:
 
 - Frontend - ReactJS, Redux
-- Backend - Java, Spring framework
+- Backend - Nodejs, Expressjs
 - Database - MySQL
 - Cloud -
 - Postman - API Testing
@@ -25,7 +25,8 @@ Develop a Hotel Reservation system with two personas Hotel Admin and Customer. T
   - Google Sheet - Tracking tasks and sprint burndown charts
   - Google meet, Google Drive - Team collaboration
 
-# Architechture Diagram:
+# Scrum Meeting Schedule
+Every thursday, 12:00 PM
 
 # UI Wireframes:
 
