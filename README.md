@@ -37,6 +37,11 @@ Adarsh Narasimha Murthy| Hotel Search, display facilities |Hotel Register, User 
 Roopesh  Sarankapani| Hotel Register/login, Add hotel facilities, View room details, Hotel profiles     | Hotel Search, Customer points, Integration
 Suhas Anand Balagar |  Nav Bar, Checkout    | User Register, hotel login, add/remove facilities, edit facilities/rooms, Cancel booking
 
+# Architecture 
+![architecture](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/hotel-booking-architechture.jpg)
+
+# Use Case Diagram
+![Use Case](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Hotel-Use-Case.jpg)
 
 # UI Wireframes:
 
