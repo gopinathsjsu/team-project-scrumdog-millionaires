@@ -59,6 +59,9 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/doc
 # Activity Diagram
 ![activity diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Activity%20Diagram%20flow.png)
 
+# Component Diagram
+![Component diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Component_diag.jpg)
+
 # Deployment Diagram
 ![deployment diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/deployment_diag.jpeg)
 
