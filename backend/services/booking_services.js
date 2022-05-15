@@ -76,7 +76,6 @@ class BookingService {
       ) {
         return HTTP_RES(400, "Invalid start and end dates");
       }
-      // Assert room can be booked
       const existingBooking = await model.getBookingsByDates(
         new Date(start),
         new Date(end),
@@ -86,7 +85,6 @@ class BookingService {
         return HTTP_RES(400, "Room Booking Exists");
       }
 
-      // (a) Validate room exists (b) and is not booked
       const rooms = await roomModel.getRoomsByRoomID(roomId);
       if (!Array.isArray(rooms) || rooms.length == 0)
         return HTTP_404("No such room");
@@ -100,7 +98,6 @@ class BookingService {
         base_price,
       } = roomObject;
 
-      // Calculate price for the room
       const finalPrice = PricingService.calculateRoomPrice({
         base_fare: PricingService.get_base_fare(base_price, start, end),
         guest_charge: PricingService.guest_charge({
@@ -257,7 +254,6 @@ class BookingService {
       festival_surge,
     } = roomObject;
 
-    // Calculate price for the room
     const finalPrice = PricingService.calculateRoomPrice({
       base_fare: PricingService.get_base_fare(base_price, start, end),
       guest_charge: PricingService.guest_charge({

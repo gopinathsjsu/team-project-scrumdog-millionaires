@@ -27,7 +27,7 @@ Develop a Hotel Reservation system with two personas Hotel Admin and Customer. T
 
 # Scrum Meeting Schedule
 
-Every thursday, 12:00 PM
+Every Thursday, 12:00 PM
 
 # Tasks breakdown
 

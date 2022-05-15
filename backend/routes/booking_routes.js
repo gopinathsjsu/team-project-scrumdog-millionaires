@@ -4,7 +4,6 @@ const router = express.Router();
 const BookingService = require("./../services/booking_services");
 const booking_service = new BookingService();
 
-// View bookings as user
 router.get("/users/:userId", async (request, response) => {
   const { params } = request;
   const { userId } = params;
@@ -118,12 +117,6 @@ router.get("/get-estimate", async (request, response) => {
   }
 });
 
-/**
- * ADMIN routes
- */
-// router.use("/", SSecurity.authenticate_admin);
-
-// View bookings as admin
 router.get("/admin", async (request, response) => {
   const { params } = request;
   const { hotelId } = params;

@@ -28,20 +28,16 @@ router.post("/login", async (req, res, next) => {
     let table = await checkPersona(personaType, res);
     if (!table) res.status(500).send("Persona not specified.");
     else {
-      // Invoke the query
       const results = await apiModel.login(table, email);
       if (results.length > 0) {
         if (hashedPassword(password) === results[0].password) {
-          // Return the response
           res.json(JSON.parse(JSON.stringify(results[0])));
         } else {
-          // Auth Error
           res.status(401).json({
             error: "Incorrect Password",
           });
         }
       } else {
-        // Auth Error
         res.status(401).json({
           error: "Incorrect Email or Password",
         });
@@ -56,18 +52,15 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/register", async (req, res, next) => {
-  // TO-DO: check if email already exists
   try {
     console.log(req.body.password);
     let personaType = req.body.personaType;
     delete req.body.personaType;
-    // Hash the password
     req.body.password = hashedPassword(req.body.password);
     let table = await checkPersona(personaType, res);
     console.log(table);
     if (!table) res.status(500).send("Persona not specified.");
     else {
-      // Invoke the querybuilder
       console.log(req.body);
 
       await apiModel.register(req.body, table);
@@ -77,7 +70,6 @@ router.post("/register", async (req, res, next) => {
       res.end("Success");
     }
   } catch (e) {
-    // Server Error
     console.error(e);
     res.status(500).json({
       error: e,

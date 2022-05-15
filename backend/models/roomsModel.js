@@ -91,7 +91,6 @@ model.updateRequestactory = (
   week_end_surge,
   festival_surge
 ) => {
-  // ADDING extra SPACE after sentence 1 to delimit fields
   const _ = `
 		name = '${name}',
 		 base_price = '${base_price}',

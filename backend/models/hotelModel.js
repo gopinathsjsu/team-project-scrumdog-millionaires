@@ -30,7 +30,6 @@ model.getHotelsByID = (hotel_id, table = DB_TABLE_HOTEL) => {
 };
 
 model.updateRequestactory = (name) => {
-  // ADDING extra SPACE after sentence 1 to delimit fields
   const _ = `
 		name = '${name}'
 	`;
