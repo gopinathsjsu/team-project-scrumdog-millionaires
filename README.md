@@ -28,6 +28,16 @@ Develop a Hotel Reservation system with two personas Hotel Admin and Customer. T
 # Scrum Meeting Schedule
 Every thursday, 12:00 PM
 
+# Tasks breakdown
+
+ Name      |FrontEnd task| Backend Task|
+-------------     |--------|------------|
+Abhishek Ganesan |User Registration,User/hotel login, user bookings page, AWS deployment            |Hotel Search,dynamic price calculation, update hotel availability, edit rooms|
+Adarsh Narasimha Murthy| Hotel Search, display facilities |Hotel Register, User login, Add/remove room, Add/view reservatio(user), documentation
+Roopesh  Sarankapani| Hotel Register/login, Add hotel facilities, View room details, Hotel profiles     | Hotel Search, Customer points, Integration
+Suhas Anand Balagar |  Nav Bar, Checkout    | User Register, hotel login, add/remove facilities, edit facilities/rooms, Cancel booking
+
+
 # UI Wireframes:
 
 # GitHub Repo Link:
