@@ -9,6 +9,9 @@ Adarsh Narasimha Murthy     |014952275|
 Roopesh  Sarankapani|      |
 Suhas Anand Balagar |      |
 
+# Application Use case
+Develop a Hotel Reservation system with two personas Hotel Admin and Customer. The hotel admin can add different types of rooms(Double rooms, Suites, Singe room) and facilities (pool,gym,spa,parking, breakfast, meals etc.). The customer can search for available rooms and book it. He must be able to view his bookings and cancel it if required.
+
 
 # Technology Stack:
 
