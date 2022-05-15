@@ -43,7 +43,9 @@ Suhas Anand Balagar |  Nav Bar, Checkout    | User Register, hotel login, add/re
 # Use Case Diagram
 ![Use Case](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Hotel-Use-Case.jpg)
 
-# UI Wireframes:
+
+# Activity Diagram
+![activity diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Activity%20Diagram%20flow.png)
 
 # GitHub Repo Link:
 
