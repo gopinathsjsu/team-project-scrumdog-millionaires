@@ -2,12 +2,13 @@
 
 # Team Members:
 
-Student Name      | SJSU ID
-------------- 
+Student Name      |
+-------------     |
 Abhishek Ganesan |
-Adarsh Narasimha Murthy <br>| 014952275
-Rooppesh Sarankapani <br>|
-Suhas Anand Balagar<br>|
+Adarsh Narasimha Murthy     |
+Roopesh  Sarankapani|
+Suhas Anand Balagar |
+
 
 # Technology Stack:
 
