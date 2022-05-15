@@ -66,6 +66,9 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/doc
 # Activity Diagram
 ![activity diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Activity%20Diagram%20flow.png)
 
+# ER diagram
+![ER diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/ER%20diagram.png)
+
 # GitHub Repo Link:
 
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
