@@ -38,8 +38,6 @@ Roopesh  Sarankapani| Hotel Register/login, Add hotel facilities, View room deta
 Suhas Anand Balagar |  Nav Bar, Checkout    | User Register, hotel login, add/remove facilities, edit facilities/rooms, Cancel booking
 
 # XP Values Implemented
-XP Values Implemented
-
 1.	Simplicity
 After the initial prosed design, we did a thorough review of it and removed all unnecessary components. We kept only features that were necessary and removed all assumed features. We also simplified the UI design and made it intuitive to the user.
 
@@ -48,6 +46,14 @@ Since we were located at different addresses, we ran the weekly scrum meetings o
 
 3.	Feedback
 We regularly reviewed each other’s and provided comments for the author of the code. Only after approval by a fellow team member, and incorporation of those comments, the code was merged to the main branch.
+
+# Weekly Scrum Reports
+https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Project_Journal.pdf
+
+# Burndown charts
+https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Burndown%20Chart.xlsx
+
+![burndown](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/burndown_diag.png)
 
 
 # Architecture 
