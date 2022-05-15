@@ -37,6 +37,19 @@ Adarsh Narasimha Murthy| Hotel Search, display facilities |Hotel Register, User 
 Roopesh  Sarankapani| Hotel Register/login, Add hotel facilities, View room details, Hotel profiles     | Hotel Search, Customer points, Integration
 Suhas Anand Balagar |  Nav Bar, Checkout    | User Register, hotel login, add/remove facilities, edit facilities/rooms, Cancel booking
 
+# XP Values Implemented
+XP Values Implemented
+
+1.	Simplicity
+After the initial prosed design, we did a thorough review of it and removed all unnecessary components. We kept only features that were necessary and removed all assumed features. We also simplified the UI design and made it intuitive to the user.
+
+2.	Communication
+Since we were located at different addresses, we ran the weekly scrum meetings on google meet. We established a WhatsApp group to facilitate communication between the group. We also had meetups on campus at critical stages of the project to better understand the dependencies of fellow team members.
+
+3.	Feedback
+We regularly reviewed each other’s and provided comments for the author of the code. Only after approval by a fellow team member, and incorporation of those comments, the code was merged to the main branch.
+
+
 # Architecture 
 ![architecture](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/hotel-booking-architechture.jpg)
 
