@@ -7,7 +7,7 @@ Student Name      |SJSU ID|
 Abhishek Ganesan |            |
 Adarsh Narasimha Murthy     |014952275|
 Roopesh  Sarankapani|      |
-Suhas Anand Balagar |      |
+Suhas Anand Balagar        |015243540|
 
 # Application Use case
 Develop a Hotel Reservation system with two personas Hotel Admin and Customer. The hotel admin can add different types of rooms(Double rooms, Suites, Singe room) and facilities (pool,gym,spa,parking, breakfast, meals etc.). The customer can search for available rooms and book it. He must be able to view his bookings and cancel it if required.
@@ -38,17 +38,17 @@ Roopesh  Sarankapani| Hotel Register/login, Add hotel facilities, View room deta
 Suhas Anand Balagar |  Nav Bar, Checkout    | User Register, hotel login, add/remove facilities, edit facilities/rooms, Cancel booking
 
 # XP Values Implemented
-XP Values Implemented
-
-1.	Simplicity
+- **Simplicity:** <br/>
 After the initial prosed design, we did a thorough review of it and removed all unnecessary components. We kept only features that were necessary and removed all assumed features. We also simplified the UI design and made it intuitive to the user.
 
-2.	Communication
+- **Communication:**<br/>
 Since we were located at different addresses, we ran the weekly scrum meetings on google meet. We established a WhatsApp group to facilitate communication between the group. We also had meetups on campus at critical stages of the project to better understand the dependencies of fellow team members.
 
-3.	Feedback
+- **Feedback:** <br/>
 We regularly reviewed each other’s and provided comments for the author of the code. Only after approval by a fellow team member, and incorporation of those comments, the code was merged to the main branch.
 
+# Weekly Scrum Reports
+https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Project_Journal.pdf
 
 # Architecture 
 ![architecture](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/hotel-booking-architechture.jpg)
@@ -56,36 +56,17 @@ We regularly reviewed each other’s and provided comments for the author of the
 # Use Case Diagram
 ![Use Case](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Hotel-Use-Case.jpg)
 
-
 # Activity Diagram
 ![activity diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Activity%20Diagram%20flow.png)
+
+# ER diagram
+![ER diagram](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/ER%20diagram.png)
+
+# Burndown charts
+https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Burndown%20Chart.xlsx
+
+![burndown](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/burndown_diag.png)
 
 # GitHub Repo Link:
 
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
-
-# Scrum Meeting Schedule:
-
-Thursday, 12:00 PM <br>
-
-# Google Drive
-
-https://drive.google.com/drive/folders/1onz9MVpowKVM4HDPWh-Q0zuU95mJbIdJ?usp=sharing
-
-# Weekly Scrum Report
-
-https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Weekly_Scrum_report.md
-
-# Burndown Chart
-
-https://docs.google.com/spreadsheets/d/1Wn4mJ8M1TZHlk2BE8Ncxz1d8peQ731jEm7CSC8-Jl0Y/edit?usp=sharing
-
-# Areas of contribution:
-
-# Extreme programming (XP) Core Values Implemented:
-
-- Communication
-
-- Simplicity
-
-- Courage
