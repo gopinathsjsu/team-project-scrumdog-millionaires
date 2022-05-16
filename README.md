@@ -98,4 +98,3 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
 ![booking](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Scrrenshot_3.png)
 
 [checkout](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Sceenshot_3.png)
-![]
