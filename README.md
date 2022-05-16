@@ -18,7 +18,7 @@ Develop a Hotel Reservation system with two personas Hotel Admin and Customer. T
 - Frontend - ReactJS, Redux
 - Backend - Nodejs, Expressjs
 - Database - MySQL
-- Cloud -
+- Cloud - AWS ElasticBean/EC2
 - Postman - API Testing
 - Project Management Tools:
   - GitHub - Source code and Project Management
