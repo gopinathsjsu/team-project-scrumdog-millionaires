@@ -1,0 +1,9 @@
+# Logs
+.history
+.dist
+
+# Dependency directories
+node_modules/
+
+# Firebase cache
+.firebase/
