@@ -83,6 +83,10 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/doc
 
 ![burndown](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/burndown_diag.png)
 
+# Project Board
+
+https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/issues?q=is%3Aissue+is%3Aclosed
+
 # GitHub Repo Link:
 
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
