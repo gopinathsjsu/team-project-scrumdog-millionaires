@@ -97,7 +97,7 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
 
 ![add room feature](add_new_room.png)
 
-![rooms db](room_db.png)
+
 ![home](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Scrrenshot_1.png)
 
 ![booking](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Scrrenshot_3.png)
