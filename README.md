@@ -87,8 +87,15 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/doc
 
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
 
-# Add Room Feature Functionality Screenshots
+# UI Wireframes
+
+![login](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Scrrenshot_2.png)
 
 ![add room feature](add_new_room.png)
 
 ![rooms db](room_db.png)
+![home](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Scrrenshot_1.png)
+
+![booking](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Scrrenshot_3.png)
+
+![checkout](https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/documents/Sceenshot_3.png)
