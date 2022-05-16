@@ -6,7 +6,7 @@
 | ----------------------- | --------- |
 | Abhishek Ganesan        | 015255045 |
 | Adarsh Narasimha Murthy | 014952275 |
-| Roopesh Sarankapani     |           |
+| Rooppesh Sarankapani    | 015253147 |
 | Suhas Anand Balagar     | 015243540 |
 
 # Application Use case
@@ -27,7 +27,7 @@ Develop a Hotel Reservation system with two personas Hotel Admin and Customer. T
 
 # Scrum Meeting Schedule
 
-Every thursday, 12:00 PM
+Every Thursday, 12:00 PM
 
 # Tasks breakdown
 
