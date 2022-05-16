@@ -86,3 +86,9 @@ https://github.com/gopinathsjsu/team-project-scrumdog-millionaires/blob/main/doc
 # GitHub Repo Link:
 
 https://github.com/gopinathsjsu/team-project-scrumdog-millionaires
+
+# Add Room Feature Functionality Screenshots
+
+![add room feature](add_new_room.png)
+
+![rooms db](room_db_after_add_room.png)
